@@ -115,11 +115,8 @@
   .search-clear:focus,.search-clear:active{outline:none!important;box-shadow:none!important;background:transparent!important;}
   html[data-theme='dark'] .search-clear:hover{color:var(--artifact-accent-soft);}
   /* Responsive safety */
-  html,body{max-width:100%;overflow-x:hidden;}
+  html,body{max-width:100%;overflow-x:clip;}
   .word-title,.hindi,.reveal-hindi,.meaning-en,.example-list li,.phrase-hint{overflow-wrap:break-word;word-break:break-word;}
-  @media (max-width:768px){
-    .controls{position:static!important;top:auto!important;}
-  }
   @media (max-width:576px){
     .controls > .d-flex:first-child{align-items:center;}
     .controls > .d-flex:first-child > .input-group{min-width:0!important;flex:1 1 auto!important;width:auto!important;}
