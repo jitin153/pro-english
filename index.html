@@ -46,16 +46,14 @@
   }
   .app-navbar{background:var(--artifact-accent-grad);box-shadow:0 6px 22px -8px rgba(124,58,237,.55);backdrop-filter:saturate(140%);z-index:1030;}
   .app-navbar .navbar-brand,.app-navbar .btn{color:#fff!important;}
-  .app-navbar .btn{border-radius:12px;background:transparent!important;border-color:transparent!important;}
-  .app-navbar .btn:hover,.app-navbar .btn:focus,.app-navbar .btn:active,.app-navbar .btn.show{background:rgba(255,255,255,.18)!important;color:#fff!important;border-color:transparent!important;box-shadow:none!important;}
+  .app-navbar .btn{border-radius:12px;}
   .brand-badge{background:rgba(255,255,255,.20);border-radius:13px;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;font-size:1.25rem;}
   .hero{max-width:1100px;margin:0 auto;padding:34px 16px 8px;}
   .hero h1{font-weight:800;letter-spacing:-1px;font-size:2.4rem;line-height:1.1;}
   .hero .lead{color:var(--artifact-muted);max-width:820px;}
   .shell{max-width:1100px;margin:0 auto;padding:0 16px;}
   .surface{background:var(--artifact-surface);border:1px solid var(--artifact-border);border-radius:8px;box-shadow:var(--artifact-shadow);}
-  .controls{padding:18px;margin-bottom:24px;position:sticky;top:calc(var(--nav-h,60px) + var(--tabbar-h,56px));z-index:1015;box-shadow:none;border-radius:0;}
-  .controls::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;pointer-events:none;background:radial-gradient(1200px 620px at 100% -6%, var(--artifact-glow-b), transparent 60%),radial-gradient(1000px 520px at -8% 0%, var(--artifact-glow-a), transparent 55%),var(--artifact-bg);background-attachment:fixed;}
+  .controls{padding:18px;margin-bottom:18px;position:sticky;top:calc(var(--nav-h,60px) + var(--tabbar-h,56px));z-index:1015;border-radius:0!important;}
   /* Pills */
   .nav-pills{--bs-nav-pills-border-radius:999px;}
   .nav-pills .nav-link{color:var(--artifact-muted);font-weight:600;border-radius:999px;padding:.5rem 1.05rem;white-space:nowrap;transition:all .16s ease;}
@@ -64,7 +62,7 @@
   h1,h2,h3,h4,h5,.navbar-brand,.word-title,.stat-value,.modal-title{font-family:var(--font-head);}
   .hindi,.reveal-hindi{font-family:var(--font-hindi);}
   /* Tab strip scroll — thin, non-overlapping */
-  #mainTabs{position:sticky;top:var(--nav-h,60px);z-index:1020;background:var(--artifact-bg);padding-top:8px;padding-bottom:14px;padding-left:5px;padding-right:5px;scrollbar-width:thin;scrollbar-color:var(--artifact-border) transparent;-webkit-overflow-scrolling:touch;}
+  #mainTabs{position:sticky;top:var(--nav-h,60px);z-index:1020;background:var(--artifact-bg);padding-top:8px;padding-bottom:8px;margin-bottom:0!important;padding-left:5px;padding-right:5px;scrollbar-width:thin;scrollbar-color:var(--artifact-border) transparent;-webkit-overflow-scrolling:touch;}
   #mainTabs::-webkit-scrollbar{height:6px;}
   #mainTabs::-webkit-scrollbar-thumb{background:var(--artifact-border);border-radius:999px;}
   #mainTabs::-webkit-scrollbar-track{background:transparent;}
@@ -107,7 +105,28 @@
   .form-select,.form-control{background:var(--artifact-surface);color:var(--artifact-text);border-color:var(--artifact-border);border-radius:8px;padding:.55rem .8rem;}
   .form-select:focus,.form-control:focus{border-color:var(--artifact-accent);box-shadow:0 0 0 .22rem rgba(124,58,237,.20);}
   .input-group-text{background:var(--artifact-chip);border-color:var(--artifact-border);color:var(--artifact-accent);border-radius:8px 0 0 8px;}
-  .input-group>.form-control{border-radius:0 8px 8px 0;}
+  .input-group>.form-control{border-radius:0 8px 8px 0!important;}
+  /* Clear (x) button inside search inputs */
+  .input-group{position:relative;}
+  .input-group .form-control{padding-right:2.5rem;}
+  .input-group>.search-clear{position:absolute;right:.55rem;top:50%;transform:translateY(-50%);z-index:10;display:inline-flex!important;align-items:center;justify-content:center;border:0!important;background:transparent!important;box-shadow:none!important;color:var(--artifact-muted);font-size:1.2rem;line-height:1;padding:0;cursor:pointer;pointer-events:auto;opacity:.5;transition:color .15s ease,transform .15s ease,opacity .15s ease;}
+  .input-group>.search-clear.show{opacity:.65;}
+  .input-group>.search-clear:hover,.input-group>.search-clear:focus{opacity:1;color:var(--artifact-accent);background:transparent!important;box-shadow:none!important;outline:none;transform:translateY(-50%) scale(1.12);}
+  .search-clear:focus,.search-clear:active{outline:none!important;box-shadow:none!important;background:transparent!important;}
+  html[data-theme='dark'] .search-clear:hover{color:var(--artifact-accent-soft);}
+  /* Responsive safety */
+  html,body{max-width:100%;overflow-x:hidden;}
+  .word-title,.hindi,.reveal-hindi,.meaning-en,.example-list li,.phrase-hint{overflow-wrap:break-word;word-break:break-word;}
+  @media (max-width:768px){
+    .controls{position:static!important;top:auto!important;}
+  }
+  @media (max-width:576px){
+    .controls > .d-flex:first-child{align-items:center;}
+    .controls > .d-flex:first-child > .input-group{min-width:0!important;flex:1 1 auto!important;width:auto!important;}
+    .controls > .d-flex:first-child > .filter-toggle{flex:0 0 auto!important;order:0;}
+    .app-navbar .btn{padding-left:.4rem!important;padding-right:.4rem!important;}
+    .app-navbar .navbar-brand{max-width:60vw;}
+  }
   html[data-theme='dark'] .input-group-text{color:var(--artifact-accent-soft);}
   .form-switch .form-check-input{width:2.4em;height:1.25em;cursor:pointer;}
   .form-check-input:checked{background-color:var(--artifact-accent);border-color:var(--artifact-accent);}
@@ -139,7 +158,9 @@
   .reveal-btn{background:transparent;border:none;color:var(--artifact-accent);padding:0 4px;font-size:1.05rem;line-height:1;cursor:pointer;flex:0 0 auto;}
   .reveal-btn:hover{transform:scale(1.15);}
   #sectionProgress .lname{width:150px;font-size:.9rem;}
-  .hide-header-extras .hero{display:none!important;}
+  .hide-header-extras .hero h1,.hide-header-extras .hero .lead,.hide-header-extras #heroProgress,.hide-header-extras #lastVisit{display:none!important;}
+  .hide-header-extras .hero{padding:0!important;margin:0!important;min-height:0!important;}
+  .hide-header-extras main.shell{margin-top:0!important;}
   @media (max-width:480px){#sectionProgress .lname,.level-row .lname{width:96px;font-size:.82rem;}}
   @media (max-width:992px){
     .hero{padding:28px 16px 6px;}
@@ -160,7 +181,7 @@
     .hero .lead{font-size:.95rem;}
     .stat-value{font-size:1.55rem;}
     .stat-tile{padding:16px 10px;}
-    .controls{padding:12px;border-radius:0;margin-bottom:20px;}
+    .controls{padding:12px;border-radius:0;margin-bottom:14px;}
     .surface{border-radius:8px;}
     .navbar-brand{font-size:1rem;}
     .brand-badge{width:34px;height:34px;font-size:1.05rem;}
@@ -175,10 +196,10 @@
   .filter-toggle{flex:0 0 auto;border-radius:8px;padding:.5rem .7rem;}
   .filter-toggle.active{background:var(--artifact-accent);border-color:var(--artifact-accent);color:#fff;}
   .filter-inline{display:flex;align-items:center;gap:.6rem;flex:0 1 auto;}
+  .filter-inline .form-switch{border:1px solid var(--artifact-border);border-radius:8px;background:var(--artifact-surface);padding:.45rem .75rem;}
+  .filter-inline .form-switch .form-check-input{margin-left:0;float:none;}
   .filter-inline .form-select{width:auto;min-width:160px;flex:0 1 auto;}
   .filter-inline .form-check{margin-bottom:0;flex:0 0 auto;white-space:nowrap;}
-  .filter-inline .form-switch{border:1px solid var(--artifact-border);border-radius:8px;padding:.55rem .8rem;background:var(--artifact-surface);}
-  .filter-inline .form-switch .form-check-input{margin-left:0;flex:0 0 auto;}
   .controls .input-group{width:auto;flex:1 1 220px;}
   @media (min-width:992px){ .filter-toggle{display:none!important;} }
   @media (max-width:991.98px){
@@ -196,43 +217,40 @@
     .stat-value{-webkit-text-fill-color:initial;color:#4f46e5;}
     *,*::before,*::after{animation:none!important;transition:none!important;}
   }
-.data-loader{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;background:var(--artifact-bg);transition:opacity .4s ease;}
-.data-loader.done{opacity:0;pointer-events:none;}
-.data-loader .dl-card{width:min(420px,86vw);text-align:center;padding:28px 24px;background:var(--artifact-surface);border:1px solid var(--artifact-border);border-radius:16px;box-shadow:var(--artifact-shadow);}
-.data-loader .dl-title{font-family:var(--font-head,inherit);font-weight:800;font-size:1.15rem;margin-bottom:14px;color:var(--artifact-text);}
-.data-loader .progress{height:12px;background:var(--artifact-chip);border-radius:999px;overflow:hidden;}
-.data-loader .progress-bar{background:var(--artifact-accent-grad,linear-gradient(90deg,#6c5ce7,#00b894));transition:width .25s ease;}
-.data-loader .dl-status{margin-top:10px;font-size:.85rem;color:var(--artifact-muted);}
-.data-loader .dl-status code{background:var(--artifact-chip);padding:1px 6px;border-radius:6px;}
-.data-loader .dl-spinner{width:34px;height:34px;margin:0 auto 14px;border-radius:50%;border:3px solid var(--artifact-chip);border-top-color:var(--artifact-accent,#6c5ce7);animation:dlspin .8s linear infinite;}
-@keyframes dlspin{to{transform:rotate(360deg);}}
-.report-dot{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--artifact-danger,#e74c3c);border:1.5px solid var(--artifact-surface);}
-#reportModal .rep-summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-#reportModal .rep-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:.82rem;font-weight:600;background:var(--artifact-chip);color:var(--artifact-text);}
-#reportModal .rep-pill.ok{background:rgba(0,184,148,.16);color:#0a8f6f;}
-#reportModal .rep-pill.warn{background:rgba(243,156,18,.18);color:#b9770e;}
-#reportModal .rep-pill.danger{background:rgba(231,76,60,.16);color:#c0392b;}
-html[data-theme='dark'] #reportModal .rep-pill.ok{color:#4fd1b0;}
-html[data-theme='dark'] #reportModal .rep-pill.warn{color:#f0b354;}
-html[data-theme='dark'] #reportModal .rep-pill.danger{color:#ff8a7a;}
-#reportModal .rep-note{font-size:.82rem;color:var(--artifact-muted);margin:10px 0 0;}
-#reportModal table.rep-table{font-size:.85rem;}
-#reportModal .rep-file{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;}
-#reportModal .rep-notes{font-size:.78rem;}
-#reportModal .rep-muted{color:var(--artifact-muted);}
-#reportModal tr.row-warn td{background:rgba(243,156,18,.08);}
-#reportModal tr.row-danger td{background:rgba(231,76,60,.08);}
+.as-pager-inline{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.3rem;margin-bottom:0;border:0;background:transparent;box-shadow:none;padding:0;}
+.as-pager-inline .btn{padding:.1rem .35rem;font-size:1.05rem;line-height:1;border:0!important;background:transparent;color:var(--artifact-muted);font-weight:700;-webkit-text-stroke:.045em currentColor;}
+.as-pager-inline .btn:hover{color:var(--artifact-text);background:transparent;}
+.as-pager-inline .btn:disabled{opacity:.3;}
+.spin{display:inline-block;animation:as-spin 1s linear infinite;}
+@keyframes as-spin{to{transform:rotate(360deg);}}
+.rep-table th{white-space:nowrap;font-size:.76rem;}
+.rep-table td{font-size:.82rem;}
+.rep-flags .badge{margin-right:.35rem;margin-bottom:.35rem;}
+.badge.rep-idle{background:#94a3b8;color:#fff;} .badge.rep-partial{background:#f59e0b;color:#fff;} .badge.rep-complete{background:#10b981;color:#fff;} .badge.rep-loading{background:#6366f1;color:#fff;}
+.rep-errs{max-height:200px;overflow:auto;}
+  :root{--dt-ok-bg:rgba(22,163,74,.14);--dt-ok-fg:#15803d;--dt-bad-bg:rgba(220,38,38,.14);--dt-bad-fg:#b91c1c;--dt-warn-bg:rgba(217,119,6,.14);--dt-warn-fg:#b45309;}
+  html[data-theme='dark']{--dt-ok-fg:#4ade80;--dt-bad-fg:#f87171;--dt-warn-fg:#fbbf24;}
+
+  /* ===== Data Tools modal ===== */
+  #dataToolsModal .dt-pill{cursor:pointer;border:1px solid var(--artifact-border);background:var(--artifact-surface);color:var(--artifact-text);border-radius:10px;padding:.5rem .9rem;font-weight:600;font-size:.92rem;transition:all .12s ease;}
+  #dataToolsModal .dt-pill:hover{border-color:var(--artifact-accent);}
+  #dataToolsModal .dt-pill.active{background:var(--artifact-accent-grad);color:#fff;border-color:transparent;}
+  #dataToolsModal .dt-panel{display:none;}
+  #dataToolsModal .dt-panel.active{display:block;}
+  #dataToolsModal .dt-drop{border:2px dashed var(--artifact-border);border-radius:12px;padding:22px;text-align:center;color:var(--artifact-muted);cursor:pointer;transition:border-color .15s ease,background .15s ease;}
+  #dataToolsModal .dt-drop:hover,#dataToolsModal .dt-drop.drag{border-color:var(--artifact-accent);background:var(--artifact-chip);}
+  #dataToolsModal .dt-result{margin-top:14px;font-size:.9rem;}
+  #dataToolsModal .dt-badge{display:inline-flex;align-items:center;gap:.35rem;border-radius:999px;padding:.12rem .55rem;font-size:.78rem;font-weight:700;}
+  #dataToolsModal .dt-ok{background:var(--dt-ok-bg);color:var(--dt-ok-fg);}
+  #dataToolsModal .dt-bad{background:var(--dt-bad-bg);color:var(--dt-bad-fg);}
+  #dataToolsModal .dt-warn{background:var(--dt-warn-bg);color:var(--dt-warn-fg);}
+  #dataToolsModal .dt-list{max-height:230px;overflow:auto;border:1px solid var(--artifact-border);border-radius:8px;padding:8px 14px;margin-top:8px;background:var(--artifact-surface);list-style:none;}
+  #dataToolsModal .dt-list li{font-size:.86rem;color:var(--artifact-text);}
+  #dataToolsModal code{background:var(--artifact-chip);padding:.05rem .35rem;border-radius:5px;font-size:.85em;}
+
 </style>
 </head>
 <body>
-<div id="dataLoader" class="data-loader" data-glean-id="data-loader">
-  <div class="dl-card">
-    <div class="dl-spinner" id="dlSpinner" aria-hidden="true"></div>
-    <div class="dl-title" id="dlTitle">Loading content…</div>
-    <div class="progress"><div id="dlBar" class="progress-bar" role="progressbar" style="width:0%"></div></div>
-    <div class="dl-status" id="dlStatus">Preparing…</div>
-  </div>
-</div>
 <nav class="navbar app-navbar sticky-top" data-glean-id="app-navbar">
   <div class="shell d-flex align-items-center justify-content-between w-100">
     <span class="navbar-brand d-flex align-items-center gap-2 mb-0">
@@ -240,11 +258,12 @@ html[data-theme='dark'] #reportModal .rep-pill.danger{color:#ff8a7a;}
       <span><strong>ProEnglish</strong> <span class="d-none d-sm-inline opacity-75">· Learn English</span></span>
     </span>
     <div class="d-flex gap-2">
-      <button class="btn btn-sm btn-outline-light" id="importBtnHeader" type="button" title="Import JSON into this tab"><i class="bi bi-upload"></i></button>
-      <button class="btn btn-sm btn-outline-light position-relative" id="reportBtn" type="button" title="Data load report"><i class="bi bi-clipboard-data"></i><span id="reportDot" class="report-dot" hidden></span></button>
-      <button class="btn btn-sm btn-outline-light" id="settingsBtn" type="button" title="Settings"><i class="bi bi-gear"></i></button>
+      <button class="btn btn-sm" id="importBtnHeader" type="button" title="Import JSON into this tab"><i class="bi bi-upload"></i></button>
+      <button class="btn btn-sm" id="reportBtn" type="button" title="Data load report"><i class="bi bi-clipboard-data"></i></button>
+      <button class="btn btn-sm" id="settingsBtn" type="button" title="Settings"><i class="bi bi-gear"></i></button>
       <button class="btn btn-sm" id="themeBtn" type="button" title="Toggle theme"><i class="bi bi-moon-stars"></i></button>
-      <button class="btn btn-sm btn-outline-light" id="resetBtn" type="button" title="Clear saved progress"><i class="bi bi-trash3"></i></button>
+      <button class="btn btn-sm" id="dataToolsBtn" type="button" title="Data tools: validate &amp; split data files" data-glean-id="data-tools-btn"><i class="bi bi-tools"></i></button>
+      <button class="btn btn-sm" id="resetBtn" type="button" title="Clear saved progress"><i class="bi bi-trash3"></i></button>
     </div>
   </div>
 </nav>
@@ -280,7 +299,7 @@ html[data-theme='dark'] #reportModal .rep-pill.danger{color:#ff8a7a;}
       <div class="surface controls">
         <div class="d-flex gap-2 align-items-center">
           <div class="input-group flex-grow-1"><span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input id="vSearch" type="text" class="form-control" placeholder="Search word, meaning or sentence..."></div>
+            <input id="vSearch" type="text" class="form-control" placeholder="Search word, meaning or sentence..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button></div>
           <button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button>
         </div>
         <div class="filter-body">
@@ -304,7 +323,7 @@ html[data-theme='dark'] #reportModal .rep-pill.danger{color:#ff8a7a;}
       <div class="surface controls">
         <div class="d-flex gap-2 align-items-center flex-wrap">
           <div class="input-group flex-grow-1" style="min-width:200px;"><span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input id="dSearch" type="text" class="form-control" placeholder="Search a phrase or situation..."></div>
+            <input id="dSearch" type="text" class="form-control" placeholder="Search a phrase or situation..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button></div>
           <button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button>
           <div class="filter-body filter-inline">
             <select id="dCat" class="form-select"><option value="">All situations</option></select>
@@ -429,10 +448,38 @@ html[data-theme='dark'] #reportModal .rep-pill.danger{color:#ff8a7a;}
           <div><div class="setting-name">Auto-reset on browser / tab close</div><div class="setting-desc">Clear all progress when you fully close the tab or browser. A normal page refresh keeps your progress.</div></div>
           <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="setAutoReset"></div>
         </div>
+        <hr class="my-4">
+        <h6 class="settings-h"><i class="bi bi-lightning-charge me-1"></i>Performance &amp; data loading</h6>
+        <div class="setting-row">
+          <div><div class="setting-name">Load first page of every tab at startup</div><div class="setting-desc">When on, the first page of <em>all</em> sections is fetched as soon as the app opens. Off (default) loads only the tab you are viewing, and other tabs load on first visit.</div></div>
+          <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="setLoadAllFirst"></div>
+        </div>
+        <div class="setting-row">
+          <div><div class="setting-name">Clear a tab&#39;s data when you switch away</div><div class="setting-desc">When on, leaving a tab frees its loaded pages from memory and reloads them next time. Off (default) keeps them so revisits are instant.</div></div>
+          <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="setClearOnSwitch"></div>
+        </div>
+        <div class="setting-row">
+          <div><div class="setting-name">Keep pages in memory while paginating</div><div class="setting-desc">When on, Prev/Next accumulate pages (search &amp; sort span all of them) and Prev never reloads. Off (default) keeps only the current page and reloads on navigation to stay light.</div></div>
+          <div class="form-check form-switch mb-0"><input class="form-check-input" type="checkbox" id="setKeepPages"></div>
+        </div>
       </div>
       <div class="modal-footer border-0">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Done</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Data load report modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title"><i class="bi bi-clipboard-data me-2"></i>Data load report</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="reportBody"></div>
+      <div class="modal-footer border-0"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button></div>
     </div>
   </div>
 </div>
@@ -447,16 +494,64 @@ html[data-theme='dark'] #reportModal .rep-pill.danger{color:#ff8a7a;}
   </div>
 </div>
 
+<!-- DATA TOOLS MODAL -->
+<div class="modal fade" id="dataToolsModal" tabindex="-1" aria-hidden="true" data-glean-id="data-tools-modal">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title"><i class="bi bi-tools me-2"></i>Data Tools</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex gap-2 mb-3">
+          <div class="dt-pill active" data-dt-pill="validate">Validate a data file</div>
+          <div class="dt-pill" data-dt-pill="split">Split &amp; convert raw JSON</div>
+        </div>
+
+        <div class="dt-panel active" data-dt-panel="validate" data-glean-id="dt-validate-panel">
+          <p class="mb-2 phrase-hint">Pick the tab this file belongs to, then upload a <code>.js</code> data file. It checks whether the app would read it if placed in <code>data/&lt;folder&gt;/</code>.</p>
+          <label class="form-label small fw-semibold mb-1">Tab / section</label>
+          <select class="form-select mb-3" id="dtValTab"></select>
+          <div class="dt-drop" id="dtValDrop"><i class="bi bi-filetype-js fs-3 d-block mb-1"></i>Click to choose a <b>.js</b> file, or drop it here</div>
+          <input type="file" id="dtValFile" accept=".js,text/javascript" hidden>
+          <div class="dt-result" id="dtValResult"></div>
+        </div>
+
+        <div class="dt-panel" data-dt-panel="split" data-glean-id="dt-split-panel">
+          <p class="mb-2 phrase-hint">Pick the target tab, upload one large raw <b>JSON</b> file (an array of entries), choose entries per file, then generate app-ready <code>.js</code> files as a <code>.zip</code>.</p>
+          <label class="form-label small fw-semibold mb-1">Tab / section</label>
+          <select class="form-select mb-3" id="dtSplitTab"></select>
+          <div class="row g-2 align-items-end mb-3">
+            <div class="col-7">
+              <label class="form-label small fw-semibold mb-1">Entries per file</label>
+              <input type="number" class="form-control" id="dtSplitPer" min="1" step="1" value="50">
+            </div>
+            <div class="col-5 text-end"><span class="phrase-hint" id="dtSplitHint"></span></div>
+          </div>
+          <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="dtSplitFormat">
+            <label class="form-check-label small" for="dtSplitFormat">Format output <span class="phrase-hint">(pretty-print each file &mdash; more readable but larger; default off = compact &amp; smaller)</span></label>
+          </div>
+          <div class="dt-drop" id="dtSplitDrop"><i class="bi bi-filetype-json fs-3 d-block mb-1"></i>Click to choose a <b>.json</b> file, or drop it here</div>
+          <input type="file" id="dtSplitFile" accept=".json,application/json" hidden>
+          <div class="dt-result" id="dtSplitResult"></div>
+          <button class="btn btn-primary mt-3" id="dtSplitGo" type="button" style="background:var(--artifact-accent);border:none;" disabled><i class="bi bi-scissors me-1"></i>Split &amp; download .zip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-let VOCAB=[],DAILY=[],IDIOMS=[],SLANG=[],PHRASALS=[],PROVERBS=[],MISTAKES=[],CONFUSING=[];
+const VOCAB=[],DAILY=[],IDIOMS=[],SLANG=[],PHRASALS=[],PROVERBS=[],MISTAKES=[],CONFUSING=[];
 const LS={learned:'as_learned_words',practised:'as_practised_phrases',expr:'as_learned_expr',
   tab:'as_active_tab',vocab:'as_vocab_state',daily:'as_daily_state',theme:'as_theme',last:'as_last_visit'};
 const exprState=k=>'as_expr_'+k;
 const store={get(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f;}catch(e){return f;}},
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
 /* ---------- Settings (appearance + behaviour) ---------- */
-const SETT=Object.assign({autoReset:false,persistData:false,vocabPractice:true,showHeaderExtras:true,palette:'violet',font:'jakarta'},store.get('as_settings',{}));
+const SETT=Object.assign({autoReset:false,persistData:false,vocabPractice:true,showHeaderExtras:true,loadAllFirst:false,clearOnSwitch:false,keepPages:false,palette:'violet',font:'jakarta'},store.get('as_settings',{}));
 function saveSettings(){try{localStorage.setItem('as_settings',JSON.stringify(SETT));}catch(e){}}
 /* Auto-reset: a fresh browser/tab session (no sessionStorage marker) wipes saved progress; a refresh keeps it. */
 if(SETT.autoReset&&!sessionStorage.getItem('as_session')){
@@ -511,8 +606,6 @@ function applyHeaderExtras(on){document.body.classList.toggle('hide-header-extra
 let learned=new Set(SETT.persistData?store.get(LS.learned,[]):[]);
 let practised=new Set(SETT.persistData?store.get(LS.practised,[]):[]);
 let learnedExpr=new Set(SETT.persistData?store.get(LS.expr,[]):[]);
-/* When "Store progress" is OFF, never leave learned words lingering in browser storage. */
-if(!SETT.persistData){[LS.learned,LS.practised,LS.expr].forEach(k=>{try{localStorage.removeItem(k);}catch(e){}});}
 const LEVELS=['Basic','Intermediate','Proficient'];
 const badgeClass={Basic:'badge-basic',Intermediate:'badge-inter',Proficient:'badge-prof'};
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -539,17 +632,31 @@ function showToast(msg,ok=true){
 }
 
 /* ---------- Theme ---------- */
+let _appTheme=store.get(LS.theme,'light');
 function applyTheme(t){
+  _appTheme=t;
   document.documentElement.setAttribute('data-bs-theme',t);
   document.documentElement.setAttribute('data-theme',t);
   document.querySelector('#themeBtn i').className=t==='dark'?'bi bi-sun':'bi bi-moon-stars';
   store.set(LS.theme,t);
 }
-applyTheme(store.get(LS.theme,'light'));
+applyTheme(_appTheme);
 themeBtn.onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+/* Guard: some hosts (esp. mobile) re-inject their own theme onto <html> a beat after load,
+   which flipped our dark mode back to light. Re-assert the user's chosen theme if that happens. */
+(function(){const root=document.documentElement;
+  const mo=new MutationObserver(()=>{
+    if(root.getAttribute('data-theme')!==_appTheme||root.getAttribute('data-bs-theme')!==_appTheme){
+      root.setAttribute('data-theme',_appTheme);root.setAttribute('data-bs-theme',_appTheme);
+    }
+  });
+  mo.observe(root,{attributes:true,attributeFilter:['data-theme','data-bs-theme']});
+})();
 applyPalette(SETT.palette);applyFont(SETT.font);applyHeaderExtras(SETT.showHeaderExtras);
 
 /* ---------- Vocabulary ---------- */
+[...new Set(VOCAB.map(v=>v.pos))].sort().forEach(p=>vPos.add(new Option(p,p)));
+[...new Set(VOCAB.map(v=>v.category))].sort().forEach(c=>vCat.add(new Option(c,c)));
 const vState=store.get(LS.vocab,{search:'',level:'',pos:'',cat:'',sort:'az'});
 vSearch.value=vState.search;vLevel.value=vState.level;vPos.value=vState.pos;vCat.value=vState.cat;vSort.value=vState.sort;
 function saveVState(){store.set(LS.vocab,{search:vSearch.value,level:vLevel.value,pos:vPos.value,cat:vCat.value,sort:vSort.value});}
@@ -580,21 +687,23 @@ function renderVocab(){
       <div class="my-2 d-flex flex-wrap gap-1"><span class="badge ${badgeClass[v.level]}">${esc(v.level)}</span><span class="badge text-bg-secondary">${esc(v.pos)}</span><span class="badge text-bg-light border">${esc(v.category)}</span></div>
       <ul class="example-list">${v.examples.map(e=>`<li>${esc(e)}</li>`).join('')}</ul></div></div>`;
   }).join('');
+  vocabGrid.querySelectorAll('.learn-toggle').forEach(b=>b.onclick=()=>{
+    const w=b.dataset.w; learned.has(w)?learned.delete(w):learned.add(w);
+    pLearned(); renderVocab(); renderProgress(); updateOverall();
+  });
+  vocabGrid.querySelectorAll('.hindi.vp-hide').forEach(el=>el.onclick=e=>{e.currentTarget.classList.remove('vp-hide');});
+  vocabGrid.querySelectorAll('.reveal-btn').forEach(b=>b.onclick=e=>{e.stopPropagation();const h=b.parentElement.querySelector('.hindi');if(h)h.classList.remove('vp-hide');b.remove();});
 }
-/* one-time event delegation: keeps rendering fast even with thousands of cards */
-vocabGrid.addEventListener('click',e=>{
-  const lt=e.target.closest('.learn-toggle');
-  if(lt){const w=lt.dataset.w;learned.has(w)?learned.delete(w):learned.add(w);pLearned();renderVocab();renderProgress();updateOverall();return;}
-  const rb=e.target.closest('.reveal-btn');
-  if(rb){e.stopPropagation();const hh=rb.parentElement.querySelector('.hindi');if(hh)hh.classList.remove('vp-hide');rb.remove();return;}
-  const hd=e.target.closest('.hindi.vp-hide');
-  if(hd){hd.classList.remove('vp-hide');}
-});
 [vSearch,vLevel,vPos,vCat,vSort].forEach(el=>el.addEventListener('input',renderVocab));
 vSearch.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault();});
-vClear.onclick=()=>{vSearch.value='';vLevel.value='';vPos.value='';vCat.value='';vSort.value='az';renderVocab();};
+vClear.onclick=()=>{vSearch.value='';vLevel.value='';vPos.value='';vCat.value='';vSort.value='az';vSearch.dispatchEvent(new Event('input',{bubbles:true}));renderVocab();};
+/* ---- Clear (x) buttons for all search inputs ---- */
+function _toggleClear(inp){const g=inp&&inp.closest('.input-group');if(!g)return;const x=g.querySelector('.search-clear');if(x)x.classList.toggle('show',!!inp.value);}
+document.addEventListener('input',e=>{if(e.target.matches&&e.target.matches('.input-group input.form-control'))_toggleClear(e.target);});
+document.addEventListener('click',e=>{const x=e.target.closest('.search-clear');if(!x)return;const g=x.closest('.input-group');const inp=g&&g.querySelector('input.form-control');if(inp){inp.value='';inp.dispatchEvent(new Event('input',{bubbles:true}));inp.focus();_toggleClear(inp);}});
 
 /* ---------- Daily ---------- */
+[...new Set(DAILY.map(d=>d.category))].sort().forEach(c=>dCat.add(new Option(c,c)));
 const dState=store.get(LS.daily,{search:'',cat:'',practice:false});
 dSearch.value=dState.search;dCat.value=dState.cat;dPractice.checked=!!dState.practice;
 function saveDState(){store.set(LS.daily,{search:dSearch.value,cat:dCat.value,practice:dPractice.checked});}
@@ -616,13 +725,12 @@ function renderDaily(){
       <div class="fw-semibold" style="font-size:1.05rem;">${esc(d.english)}</div>
       <div class="hindi reveal-hindi mt-1">${esc(d.hindi)}</div></div></div>`;
   }).join('');
+  dailyGrid.querySelectorAll('.reveal-hindi').forEach(el=>el.onclick=e=>{e.currentTarget.style.filter='none';});
+  dailyGrid.querySelectorAll('.practise-toggle').forEach(b=>b.onclick=e=>{
+    e.stopPropagation();const en=b.dataset.en;practised.has(en)?practised.delete(en):practised.add(en);
+    pPractised();renderDaily();renderProgress();updateOverall();
+  });
 }
-dailyGrid.addEventListener('click',e=>{
-  const pt=e.target.closest('.practise-toggle');
-  if(pt){e.stopPropagation();const en=pt.dataset.en;practised.has(en)?practised.delete(en):practised.add(en);pPractised();renderDaily();renderProgress();updateOverall();return;}
-  const rh=e.target.closest('.reveal-hindi');
-  if(rh){rh.style.filter='none';}
-});
 [dSearch,dCat].forEach(el=>el.addEventListener('input',renderDaily));
 dPractice.addEventListener('change',renderDaily);
 dSearch.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault();});
@@ -649,7 +757,7 @@ function buildExprTab(key){
   root.innerHTML=`<div class="surface controls">
     <div class="d-flex gap-2 align-items-center flex-wrap">
       <div class="input-group flex-grow-1" style="min-width:200px;"><span class="input-group-text"><i class="bi bi-search"></i></span>
-        <input type="text" class="form-control ex-search" placeholder="Search ${cfg.name.toLowerCase()} or meaning..."></div>
+        <input type="text" class="form-control ex-search" placeholder="Search ${cfg.name.toLowerCase()} or meaning..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button></div>
       <button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button>
       <div class="filter-body filter-inline">
         <select class="form-select ex-sort"><option value="az">A → Z</option><option value="za">Z → A</option><option value="learned">Unlearned first</option></select>
@@ -664,6 +772,7 @@ function buildExprTab(key){
   const search=root.querySelector('.ex-search'), sort=root.querySelector('.ex-sort'),
         practice=root.querySelector('.ex-practice'), grid=root.querySelector('.ex-grid'), count=root.querySelector('.ex-count');
   search.value=st.search; sort.value=st.sort; practice.checked=!!st.practice;
+  _toggleClear(search);
   function save(){store.set(exprState(key),{search:search.value,sort:sort.value,practice:practice.checked});}
   function render(){
     save();
@@ -701,6 +810,7 @@ function buildExprTab(key){
   search.addEventListener('keydown',e=>{if(e.key==='Enter')e.preventDefault();});
   sort.addEventListener('input',render); practice.addEventListener('change',render);
   EXPR[key]._render=render; render();
+  if(typeof ensurePagers==='function'){ensurePagers(key);renderPager(key);}
 }
 function renderAllExpr(){Object.keys(EXPR).forEach(k=>{if(EXPR[k]._render)EXPR[k]._render();});}
 
@@ -759,22 +869,27 @@ function restoreScroll(tab){
 }
 function activateTab(name){const btn=tabBtns.find(b=>b.dataset.tab===name)||tabBtns[0];bootstrap.Tab.getOrCreateInstance(btn).show();}
 tabBtns.forEach(b=>{
-  b.addEventListener('hide.bs.tab',()=>{if(!_restoring){scrollPos[currentTab]=window.scrollY;store.set('as_scroll',scrollPos);}});
+  b.addEventListener('hide.bs.tab',()=>{if(!_restoring){scrollPos[currentTab]=window.scrollY;store.set('as_scroll',scrollPos);}
+    if(SETT.clearOnSwitch&&TAB_CONFIG[currentTab])clearTab(currentTab);});
   b.addEventListener('shown.bs.tab',()=>{
     currentTab=b.dataset.tab;
     store.set(LS.tab,currentTab);store.set(LS.last,{tab:currentTab,time:new Date().toISOString()});
     restoreScroll(currentTab);
     if(typeof updateHeaderImport==='function')updateHeaderImport();
+    if(TAB_CONFIG[currentTab]){renderPager(currentTab);ensureTabLoaded(currentTab);}
+    updateReportModal();
   });
 });
 continueBtn.onclick=()=>activateTab(store.get(LS.tab,'vocab'));restoreScroll(currentTab);
 nextBasic.onclick=()=>{vLevel.value='Basic';renderVocab();activateTab('vocab');};
 
 /* ---------- Sticky offsets (measure navbar + tab strip) ---------- */
+function syncControlsH(){const pane=document.querySelector('.tab-pane.active');const c=pane&&pane.querySelector('.controls');document.documentElement.style.setProperty('--controls-h',((c?c.offsetHeight:0)+8)+'px');}
 function syncStickyOffsets(){
   const nav=document.querySelector('.app-navbar'), tabs=document.getElementById('mainTabs');
   document.documentElement.style.setProperty('--nav-h',(nav?nav.offsetHeight:60)+'px');
   document.documentElement.style.setProperty('--tabbar-h',(tabs?tabs.offsetHeight:56)+'px');
+  syncControlsH();
 }
 syncStickyOffsets();
 window.addEventListener('load',syncStickyOffsets);
@@ -787,9 +902,10 @@ async function resetAll(){
   Object.values(LS).forEach(k=>localStorage.removeItem(k));
   Object.keys(EXPR).forEach(k=>localStorage.removeItem(exprState(k)));localStorage.removeItem('as_scroll');scrollPos={};window.scrollTo({top:0});
   learned=new Set();practised=new Set();learnedExpr=new Set();
+  Object.keys(TAB_CONFIG).forEach(t=>{tabState[t]=freshState();rebuildArray(t);ensurePagers(t);renderPager(t);});
   vClear.click();dSearch.value='';dCat.value='';dPractice.checked=false;
   applyTheme('light');renderVocab();renderDaily();renderAllExpr();renderProgress();updateOverall();
-  activateTab('vocab');showToast('All progress cleared.');
+  activateTab('vocab');ensureTabLoaded('vocab');updateReportModal();showToast('All progress cleared.');
 }
 resetBtn.onclick=resetAll;resetBtn2.onclick=resetAll;
 
@@ -843,7 +959,7 @@ async function handleImport(tab,files){
       const it=cfg.norm(raw),k=cfg.keyf(it);
       if(!k){invalid++;return;}
       if(seen.has(k)){dupes++;return;}
-      seen.add(k);cfg.arr.push(it);added++;
+      seen.add(k);cfg.arr.push(it);if(tabState[tab])tabState[tab].imported.push(it);added++;
     });
   }
   cfg.after();renderProgress();updateOverall();renderPath();
@@ -868,7 +984,7 @@ function updateHeaderImport(){if(importBtnHeader)importBtnHeader.style.display=i
 updateHeaderImport();
 
 /* Collapsible filters (mobile/tablet): toggle the sibling filter body */
-document.addEventListener('click',e=>{const t=e.target.closest('[data-filter-toggle]');if(t){const c=t.closest('.controls');const body=c&&c.querySelector('.filter-body');if(body){body.classList.toggle('show');t.classList.toggle('active');}}});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-filter-toggle]');if(t){const c=t.closest('.controls');const body=c&&c.querySelector('.filter-body');if(body){body.classList.toggle('show');t.classList.toggle('active');setTimeout(syncControlsH,10);}}});
 
 /* ---------- Settings UI ---------- */
 function buildSettingsUI(){
@@ -878,6 +994,9 @@ function buildSettingsUI(){
   document.getElementById('setPersist').checked=SETT.persistData;
   document.getElementById('setVocabPractice').checked=SETT.vocabPractice;
   document.getElementById('setHeaderExtras').checked=SETT.showHeaderExtras;
+  document.getElementById('setLoadAllFirst').checked=SETT.loadAllFirst;
+  document.getElementById('setClearOnSwitch').checked=SETT.clearOnSwitch;
+  document.getElementById('setKeepPages').checked=SETT.keepPages;
 }
 document.getElementById('paletteGrid').addEventListener('click',e=>{const b=e.target.closest('[data-pal]');if(!b)return;SETT.palette=b.dataset.pal;applyPalette(SETT.palette);saveSettings();[...b.parentElement.children].forEach(c=>c.classList.remove('sel'));b.classList.add('sel');});
 document.getElementById('fontGrid').addEventListener('click',e=>{const b=e.target.closest('[data-font]');if(!b)return;SETT.font=b.dataset.font;applyFont(SETT.font);saveSettings();[...b.parentElement.children].forEach(c=>c.classList.remove('sel'));b.classList.add('sel');});
@@ -888,177 +1007,374 @@ document.getElementById('setPersist').addEventListener('change',e=>{SETT.persist
 });
 document.getElementById('setVocabPractice').addEventListener('change',e=>{SETT.vocabPractice=e.target.checked;saveSettings();renderVocab();showToast(SETT.vocabPractice?'Vocabulary revise mode is ON.':'Vocabulary revise mode is OFF.');});
 document.getElementById('setHeaderExtras').addEventListener('change',e=>{SETT.showHeaderExtras=e.target.checked;saveSettings();applyHeaderExtras(SETT.showHeaderExtras);});
+document.getElementById('setLoadAllFirst').addEventListener('change',e=>{SETT.loadAllFirst=e.target.checked;saveSettings();if(SETT.loadAllFirst){Object.keys(TAB_CONFIG).forEach(t=>ensureTabLoaded(t));}updateReportModal();showToast(SETT.loadAllFirst?'All tabs will load their first page at startup.':'Only the active tab loads first (default).');});
+document.getElementById('setClearOnSwitch').addEventListener('change',e=>{SETT.clearOnSwitch=e.target.checked;saveSettings();updateReportModal();showToast(SETT.clearOnSwitch?'Tabs will clear their data when you switch away.':'Tab data is kept on switch (default).');});
+document.getElementById('setKeepPages').addEventListener('change',e=>{SETT.keepPages=e.target.checked;saveSettings();updateReportModal();showToast(SETT.keepPages?'Pages now stay in memory while paginating.':'Only the current page is kept while paginating (default).');});
 document.getElementById('settingsBtn').addEventListener('click',()=>{buildSettingsUI();bootstrap.Modal.getOrCreateInstance(document.getElementById('settingsModal')).show();});
 
-/* ---------- Data loading (external JSON files) ---------- */
-/* Tab -> filename prefix map. Any file in data/ whose name starts with the
-   prefix is loaded and merged, e.g. vocabulary-1.json, vocabulary-2.json,
-   vocabulary.json, vocabulary-data.json all feed the Vocabulary tab. */
-const DATASETS={
-  vocab:{prefix:'vocabulary',arr:VOCAB},
-  daily:{prefix:'daily-phrases',arr:DAILY},
-  idioms:{prefix:'idioms',arr:IDIOMS},
-  slang:{prefix:'slang',arr:SLANG},
-  phrasal:{prefix:'phrasal-verbs',arr:PHRASALS},
-  proverbs:{prefix:'proverbs',arr:PROVERBS},
-  mistakes:{prefix:'common-mistakes',arr:MISTAKES},
-  confusing:{prefix:'confusing-words',arr:CONFUSING}
+/* ================= LAZY / PAGINATED DATA-LOADING ENGINE ================= */
+const PAGE_SIZE=50;      /* full page size; a shorter page means we've hit the end */
+const PROBE_GAP=1;       /* tolerate this many consecutive missing/broken files before stopping */
+const TAB_CONFIG={
+  vocab:{folder:'vocabulary',arr:()=>VOCAB,validate:v=>{if(!v||typeof v!=='object')return null;const w=String(v.word||'').trim();if(!w)return null;return {word:w,hindi:v.hindi||'',pos:v.pos||'other',level:LEVELS.includes(v.level)?v.level:'Basic',category:v.category||'General',examples:Array.isArray(v.examples)?v.examples:(v.example?[v.example]:[])};}},
+  daily:{folder:'daily-phrases',arr:()=>DAILY,validate:v=>{if(!v||typeof v!=='object')return null;const e=String(v.english||'').trim();if(!e)return null;return {english:e,hindi:v.hindi||'',category:v.category||'General'};}},
+  idioms:{folder:'idioms',arr:()=>IDIOMS,validate:v=>exprValidate('idioms',v)},
+  slang:{folder:'slang',arr:()=>SLANG,validate:v=>exprValidate('slang',v)},
+  phrasal:{folder:'phrasal-verbs',arr:()=>PHRASALS,validate:v=>exprValidate('phrasal',v)},
+  proverbs:{folder:'proverbs',arr:()=>PROVERBS,validate:v=>exprValidate('proverbs',v)},
+  mistakes:{folder:'common-mistakes',arr:()=>MISTAKES,validate:v=>exprValidate('mistakes',v)},
+  confusing:{folder:'confusing-words',arr:()=>CONFUSING,validate:v=>exprValidate('confusing',v)},
 };
-function itemsOf(x){return Array.isArray(x)?x:(x&&Array.isArray(x.items)?x.items:(x&&Array.isArray(x.data)?x.data:[]));}
-/* longest-prefix match so 'daily-phrases' wins over any shorter prefix */
-function matchTab(prefix){const p=String(prefix).toLowerCase();let best=null;for(const k in DATASETS){const dp=DATASETS[k].prefix.toLowerCase();if(p===dp||p.startsWith(dp)){if(!best||DATASETS[k].prefix.length>DATASETS[best].prefix.length)best=k;}}return best;}
-let __entries=0,__filesLoaded=0;
-/* Each data file calls AS_DATA(prefix, items) to register itself. Files are
-   pulled in with <script src> which is allowed on file:// (unlike fetch),
-   so the page works as a pure static site with NO server. */
-function toArr(x){return Array.isArray(x)?x.filter(v=>v!=null&&v!==''):(x==null||x===''?[]:[x]);}
-/* Normalize each incoming record so files with slightly different field names
-   or missing fields don't break the renderers. Expression tabs normalize
-   again at render time. */
-function normEntry(k,o){
-  if(!o||typeof o!=='object')return null;
-  if(k==='vocab')return{
-    word:String(o.word!=null?o.word:(o.term||o.english||'')).trim(),
-    hindi:String(o.hindi!=null?o.hindi:(o.meaning||o.translation||o.hi||'')),
-    pos:String(o.pos||o.partOfSpeech||''),
-    level:String(o.level||'Basic'),
-    category:String(o.category||o.cat||'General'),
-    examples:toArr(o.examples!=null?o.examples:o.example)
-  };
-  if(k==='daily')return{
-    english:String(o.english!=null?o.english:(o.phrase||o.en||'')).trim(),
-    hindi:String(o.hindi!=null?o.hindi:(o.meaning||o.translation||o.hi||'')),
-    category:String(o.category||o.cat||'General')
-  };
+function exprValidate(tab,raw){
+  if(!raw||typeof raw!=='object')return null;
+  const c=EXPR[tab];const o=normExpr(c,raw);
+  if(!o[c.tf]||!String(o[c.tf]).trim())return null;
   return o;
 }
-/* Return a reason string if the entry should be skipped, else '' (valid). */
-function validateEntry(k,o){
-  if(!o||typeof o!=='object')return 'not an object';
-  if(k==='vocab')return o.word?'':'missing "word"';
-  if(k==='daily')return o.english?'':'missing "english"';
-  const hasText=Object.keys(o).some(kk=>typeof o[kk]==='string'&&o[kk].trim());
-  return hasText?'':'empty entry';
-}
-/* ---- Fault-tolerant load report ---- */
-const LOAD_REPORT={files:[],added:0,skipped:0,fileIssues:0};
-let __curFile='(inline)';
-window.AS_DATA=function(prefix,items){
-  const rec={file:__curFile,prefix:String(prefix),total:0,added:0,skipped:0,reasons:{},error:null};
+const folderToTab={};Object.keys(TAB_CONFIG).forEach(t=>folderToTab[TAB_CONFIG[t].folder]=t);
+const tabState={};
+function freshState(){return {pages:new Map(),currentPage:0,lastKnownPage:0,endReached:false,
+  loadedPages:new Set(),loadingPages:new Set(),failedPages:new Set(),loadingPromises:{},
+  imported:[],pageMeta:{},report:{entriesLoaded:0,entriesSkipped:0,pagesSkipped:0,filesMissing:[],errors:[]},started:false};}
+Object.keys(TAB_CONFIG).forEach(t=>{tabState[t]=freshState();});
+
+/* Every data file calls this global to register one page of entries. */
+window.AS_DATA=function(folder,page,entries){
   try{
-    const k=matchTab(prefix);
-    if(!k){rec.error='Unknown prefix "'+prefix+'" \u2014 file skipped';console.warn('[ProEnglish] '+rec.file+': '+rec.error);LOAD_REPORT.files.push(rec);LOAD_REPORT.fileIssues++;return;}
-    const arr=itemsOf(items);rec.total=arr.length;
-    for(let i=0;i<arr.length;i++){
-      try{
-        const o=normEntry(k,arr[i]);
-        const why=validateEntry(k,o);
-        if(why){rec.skipped++;rec.reasons[why]=(rec.reasons[why]||0)+1;console.warn('[ProEnglish] '+rec.file+' entry #'+(i+1)+' skipped: '+why);continue;}
-        DATASETS[k].arr.push(o);rec.added++;
-      }catch(err){rec.skipped++;rec.reasons['exception']=(rec.reasons['exception']||0)+1;console.warn('[ProEnglish] '+rec.file+' entry #'+(i+1)+' skipped (exception):',err);}
-    }
-    __entries+=rec.added;__filesLoaded++;
-  }catch(err){
-    rec.error=String(err&&err.message||err);console.error('[ProEnglish] '+rec.file+' failed:',err);LOAD_REPORT.fileIssues++;
-  }
-  LOAD_REPORT.added+=rec.added;LOAD_REPORT.skipped+=rec.skipped;
-  if(rec.skipped>0||rec.error)LOAD_REPORT.fileIssues+=0; // counted above for errors
-  LOAD_REPORT.files.push(rec);
-  const st=document.getElementById('dlStatus');if(st)st.textContent='Loaded '+__filesLoaded+' files \u00b7 '+__entries+' entries';
+    const tab=folderToTab[folder];
+    if(!tab){console.warn('[AS_DATA] unknown folder:',folder);return;}
+    const st=tabState[tab],cfg=TAB_CONFIG[tab];page=Number(page);
+    if(!Array.isArray(entries)){console.warn('[AS_DATA] entries not an array for',folder,'page',page);entries=[];}
+    let kept=[],skipped=0;
+    entries.forEach(raw=>{try{const v=cfg.validate(raw);if(v)kept.push(v);else{skipped++;console.warn('[AS_DATA] skipped malformed entry in',folder,'page',page,raw);}}catch(e){skipped++;console.warn('[AS_DATA] entry error in',folder,'page',page,e);}});
+    st.pages.set(page,kept);st.loadedPages.add(page);
+    st.pageMeta[page]={entries:kept.length,skipped};
+    st.report.entriesLoaded+=kept.length;st.report.entriesSkipped+=skipped;
+    st._committed=page;
+  }catch(e){console.error('[AS_DATA] failed to register',folder,page,e);}
 };
-function loadScript(src){
-  return new Promise(res=>{
-    __curFile=src.split('/').pop();
-    const s=document.createElement('script');s.src=src;s.async=false;
-    s.onload=()=>res(true);
-    s.onerror=()=>{s.remove();res(false);};
+
+function rebuildArray(tab){
+  const cfg=TAB_CONFIG[tab],arr=cfg.arr(),st=tabState[tab];
+  arr.length=0;
+  /* Show ONLY the current page's entries (max one page ~PAGE_SIZE items),
+     even if several pages are held in memory ("Keep pages in memory" ON). */
+  const keys=[...st.pages.keys()].sort((a,b)=>a-b);
+  const cur=(st.currentPage&&st.pages.has(st.currentPage))?st.currentPage:keys[0];
+  (st.pages.get(cur)||[]).forEach(e=>arr.push(e));
+  st.imported.forEach(e=>arr.push(e));
+}
+function renderTab(tab){
+  if(tab==='vocab'){syncOptions(vPos,VOCAB.map(v=>v.pos));syncOptions(vCat,VOCAB.map(v=>v.category));renderVocab();}
+  else if(tab==='daily'){syncOptions(dCat,DAILY.map(d=>d.category));renderDaily();}
+  else if(EXPR[tab]){buildExprTab(tab);}
+  renderProgress();updateOverall();
+}
+
+/* Inject a page's script; resolves 'loaded' | 'missing' | 'empty'. Fully fault tolerant. */
+function loadPage(tab,page){
+  const st=tabState[tab],cfg=TAB_CONFIG[tab];page=Number(page);
+  if(st.pages.has(page))return Promise.resolve('loaded');
+  if(st.loadingPromises[page])return st.loadingPromises[page];
+  const url='data/'+cfg.folder+'/'+cfg.folder+'-'+page+'.js';
+  const p=new Promise(resolve=>{
+    st.loadingPages.add(page);renderPager(tab);
+    const s=document.createElement('script');s.src=url;s.async=false;
+    s.onload=()=>{st.loadingPages.delete(page);delete st.loadingPromises[page];
+      if(st.pages.has(page)){st.lastKnownPage=Math.max(st.lastKnownPage,page);s.remove();resolve('loaded');}
+      else{st.failedPages.add(page);st.report.pagesSkipped++;st.report.errors.push('Page '+page+' ('+cfg.folder+'): file loaded but registered no valid data');console.warn('[loader] '+url+' loaded but registered no data');s.remove();resolve('empty');}
+    };
+    s.onerror=()=>{st.loadingPages.delete(page);delete st.loadingPromises[page];st.failedPages.add(page);
+      if(st.report.filesMissing.indexOf(url)<0)st.report.filesMissing.push(url);
+      console.warn('[loader] missing/failed file: '+url);s.remove();resolve('missing');};
     document.head.appendChild(s);
   });
+  st.loadingPromises[page]=p;return p;
 }
-function afterDataLoaded(){
-  syncOptions(vPos,VOCAB.map(v=>v.pos));syncOptions(vCat,VOCAB.map(v=>v.category));
-  vPos.value=vState.pos;vCat.value=vState.cat;
-  syncOptions(dCat,DAILY.map(d=>d.category));dCat.value=dState.cat;
-  Object.keys(EXPR).forEach(buildExprTab);
-  renderVocab();renderDaily();renderProgress();updateOverall();
-  activateTab(store.get(LS.tab,'vocab'));
+
+/* Probe for an existing page starting at `from`, tolerating small gaps of missing files. */
+async function findExisting(tab,from,dir){
+  dir=dir||1;let misses=0,p=Number(from);
+  while(p>=1){
+    const r=await loadPage(tab,p);
+    if(r==='loaded')return p;
+    misses++;if(misses>PROBE_GAP)break;
+    p+=dir;if(p<1)break;
+  }
+  return null;
 }
-/* Build the report modal body and toggle the navbar warning dot */
-function renderLoadReport(){
+
+async function goToPage(tab,target){
+  const st=tabState[tab];target=Number(target);if(target<1)return;
+  const forward=target>=st.currentPage;
+  const found=await findExisting(tab,target,forward?1:-1);
+  if(found==null){
+    if(forward){st.endReached=true;showToast('No more pages in this section.',false);}
+    renderPager(tab);updateReportModal();return;
+  }
+  if(!SETT.keepPages){[...st.pages.keys()].forEach(pg=>{if(pg!==found)st.pages.delete(pg);});}
+  st.currentPage=found;st.lastKnownPage=Math.max(st.lastKnownPage,found);
+  const len=(st.pages.get(found)||[]).length;
+  st.endReached=(len<PAGE_SIZE);   /* current page short => last page; full page => Next stays available */
+  rebuildArray(tab);renderTab(tab);renderPager(tab);updateReportModal();
+}
+function goNext(tab){return goToPage(tab,(tabState[tab].currentPage||0)+1);}
+function goPrev(tab){const st=tabState[tab];if((st.currentPage||0)>1)return goToPage(tab,st.currentPage-1);}
+
+/* Lazy-load a tab's first page the first time it is opened. */
+async function ensureTabLoaded(tab){
+  if(!TAB_CONFIG[tab])return;const st=tabState[tab];
+  if(st.started&&st.pages.size)return;
+  if(st.started&&st.loadingPages.size)return;
+  st.started=true;
+  await goToPage(tab,st.currentPage>=1?st.currentPage:1);
+}
+function clearTab(tab){
+  if(!TAB_CONFIG[tab])return;
+  tabState[tab]=freshState();rebuildArray(tab);renderTab(tab);renderPager(tab);updateReportModal();
+}
+
+/* ---- Pagination controls (rendered at the top AND bottom of every data tab) ---- */
+function pagerHTML(tab){
+  const st=tabState[tab],loading=st.loadingPages.size>0,cur=st.currentPage||1;
+  const prevDis=(cur<=1||loading)?'disabled':'';
+  const atEnd=st.endReached&&cur>=st.lastKnownPage;
+  const nextDis=(atEnd||loading)?'disabled':'';
+  return '<button class="btn btn-sm as-prev" type="button" title="Previous page" aria-label="Previous page" '+prevDis+'><i class="bi bi-chevron-left"></i></button>'
+    +'<button class="btn btn-sm as-next" type="button" title="Next page" aria-label="Next page" '+nextDis+'><i class="bi bi-chevron-right"></i></button>';
+}
+function ensurePagers(tab){
+  const pane=document.getElementById('pane-'+tab);if(!pane)return;
+  pane.querySelectorAll('.as-pager-top,.as-pager-bottom').forEach(el=>el.remove());
+  const ctrls=pane.querySelector('.controls');if(!ctrls)return;
+  let inl=ctrls.querySelector('.as-pager-inline');
+  if(!inl){inl=document.createElement('div');inl.className='as-pager as-pager-inline';inl.dataset.tab=tab;ctrls.appendChild(inl);}
+}
+function renderPager(tab){const pane=document.getElementById('pane-'+tab);if(!pane)return;ensurePagers(tab);pane.querySelectorAll('.as-pager').forEach(el=>{el.innerHTML=pagerHTML(tab);});syncControlsH();}
+document.addEventListener('click',e=>{const pager=e.target.closest('.as-pager');if(!pager)return;const tab=pager.dataset.tab;
+  if(e.target.closest('.as-next'))goNext(tab);else if(e.target.closest('.as-prev'))goPrev(tab);});
+
+/* ---- Data-load report ---- */
+function tabLabel(t){return EXPR[t]?EXPR[t].name:(t==='vocab'?'Vocabulary':(t==='daily'?'Daily Phrases':t));}
+function updateReportModal(){
   const body=document.getElementById('reportBody');if(!body)return;
-  const filesOk=LOAD_REPORT.files.filter(f=>!f.error).length;
-  const issues=LOAD_REPORT.skipped>0||LOAD_REPORT.fileIssues>0||LOAD_REPORT.files.some(f=>f.error);
-  const dot=document.getElementById('reportDot');if(dot)dot.hidden=!issues;
-  let html='<div class="rep-summary">';
-  html+='<span class="rep-pill ok"><i class="bi bi-check2-circle"></i> '+LOAD_REPORT.added+' entries loaded</span>';
-  html+='<span class="rep-pill neutral"><i class="bi bi-files"></i> '+filesOk+' files read</span>';
-  if(LOAD_REPORT.skipped>0)html+='<span class="rep-pill warn"><i class="bi bi-exclamation-triangle"></i> '+LOAD_REPORT.skipped+' entries skipped</span>';
-  const errFiles=LOAD_REPORT.files.filter(f=>f.error).length;
-  if(errFiles>0)html+='<span class="rep-pill danger"><i class="bi bi-x-octagon"></i> '+errFiles+' files with problems</span>';
-  html+='</div>';
-  if(!issues){html+='<p class="rep-note"><i class="bi bi-emoji-smile me-1"></i>Sab kuch theek hai \u2014 saari files aur entries bina kisi problem ke load ho gayi.</p>';}
-  html+='<div class="table-responsive"><table class="table table-sm rep-table align-middle"><thead><tr><th>File</th><th>Tab</th><th class="text-end">Loaded</th><th class="text-end">Skipped</th><th>Notes</th></tr></thead><tbody>';
-  LOAD_REPORT.files.forEach(f=>{
-    let notes='';
-    if(f.error)notes='<span class="text-danger">'+esc(f.error)+'</span>';
-    else{const rs=Object.keys(f.reasons);notes=rs.length?rs.map(r=>esc(r)+' \u00d7'+f.reasons[r]).join(', '):'<span class="rep-muted">\u2014</span>';}
-    const cls=f.error?'row-danger':(f.skipped>0?'row-warn':'');
-    html+='<tr class="'+cls+'"><td class="rep-file">'+esc(f.file)+'</td><td>'+esc(f.prefix)+'</td><td class="text-end">'+f.added+'</td><td class="text-end">'+(f.skipped||0)+'</td><td class="rep-notes">'+notes+'</td></tr>';
-  });
-  html+='</tbody></table></div>';
-  html+='<p class="rep-note"><i class="bi bi-info-circle me-1"></i>Skipped entries/files sirf ignore hoti hain \u2014 baaki sab data normal use ke liye available hai. Details browser console me bhi hain.</p>';
-  body.innerHTML=html;
+  const rows=Object.keys(TAB_CONFIG).map(t=>{
+    const st=tabState[t],cfg=TAB_CONFIG[t],mem=cfg.arr().length;
+    const pagesMem=[...st.pages.keys()].sort((a,b)=>a-b).join(', ')||'—';
+    const missing=st.report.filesMissing.length?st.report.filesMissing.map(f=>f.split('/').pop()).join(', '):'—';
+    const state=st.loadingPages.size?'loading':(st.started?(st.endReached?'complete':'partial'):'idle');
+    return '<tr><td class="fw-semibold">'+esc(tabLabel(t))+'</td><td><code>'+cfg.folder+'</code></td>'
+      +'<td>'+(st.currentPage||'—')+'</td><td>'+st.pages.size+' <span class="text-muted small">('+pagesMem+')</span></td>'
+      +'<td>'+mem+'</td><td>'+st.report.entriesLoaded+'</td><td>'+(st.report.entriesSkipped||0)+'</td>'
+      +'<td>'+(st.report.pagesSkipped||0)+'</td><td class="small">'+missing+'</td>'
+      +'<td><span class="badge rep-'+state+'">'+state+'</span></td></tr>';
+  }).join('');
+  const errs=[];Object.keys(TAB_CONFIG).forEach(t=>{tabState[t].report.errors.forEach(e=>errs.push(esc(e)));});
+  body.innerHTML='<div class="rep-flags mb-3">'
+    +'<span class="badge '+(SETT.loadAllFirst?'text-bg-success':'text-bg-secondary')+'">Load all first pages: '+(SETT.loadAllFirst?'ON':'OFF')+'</span>'
+    +'<span class="badge '+(SETT.clearOnSwitch?'text-bg-success':'text-bg-secondary')+'">Clear on tab switch: '+(SETT.clearOnSwitch?'ON':'OFF')+'</span>'
+    +'<span class="badge '+(SETT.keepPages?'text-bg-success':'text-bg-secondary')+'">Keep pages in memory: '+(SETT.keepPages?'ON':'OFF')+'</span></div>'
+    +'<div class="table-responsive"><table class="table table-sm align-middle rep-table"><thead><tr>'
+    +'<th>Section</th><th>Folder</th><th>Cur.&nbsp;pg</th><th>Pages in memory</th><th>In&nbsp;memory</th><th>Loaded&nbsp;(cum)</th><th>Skipped&nbsp;entries</th><th>Skipped&nbsp;pages</th><th>Missing&nbsp;files</th><th>State</th>'
+    +'</tr></thead><tbody>'+rows+'</tbody></table></div>'
+    +(errs.length?('<h6 class="mt-3">Warnings / errors ('+errs.length+')</h6><ul class="rep-errs small">'+errs.map(e=>'<li>'+e+'</li>').join('')+'</ul>'):'<p class="phrase-hint mb-0">No load errors so far.</p>');
 }
-function openReport(){renderLoadReport();try{const el=document.getElementById('reportModal');if(el&&window.bootstrap)bootstrap.Modal.getOrCreateInstance(el).show();}catch(e){console.warn('report modal',e);}}
-async function loadAllData(){
-  const bar=document.getElementById('dlBar'),loader=document.getElementById('dataLoader');
-  const prefixes=Object.keys(DATASETS).map(k=>DATASETS[k].prefix);
-  let done=0;const total=prefixes.length;
-  /* For each tab-prefix, load conventional filenames. Drop a new file that
-     starts with the prefix (e.g. vocabulary-2.js) and it loads automatically
-     \u2014 no manifest, no HTML edit. A broken file or entry is skipped and
-     logged; loading always continues to the next one. */
-  for(const p of prefixes){
-    await loadScript('data/'+p+'.js');
-    await loadScript('data/'+p+'-data.js');
-    let miss=0;
-    for(let i=1;i<=99&&miss<3;i++){const ok=await loadScript('data/'+p+'-'+i+'.js');miss=ok?0:miss+1;}
-    done++;if(bar)bar.style.width=Math.round(done/total*100)+'%';
-  }
-  try{afterDataLoaded();}catch(err){console.error('[ProEnglish] render error:',err);}
-  renderLoadReport();
-  const reportBtn=document.getElementById('reportBtn');if(reportBtn)reportBtn.addEventListener('click',openReport);
-  if(__entries===0){
-    const title=document.getElementById('dlTitle'),st=document.getElementById('dlStatus'),sp=document.getElementById('dlSpinner');
-    if(title)title.textContent='No data files found';
-    if(st)st.innerHTML='Rakhein <code>data/</code> folder is HTML ke saath, aur usme <code>vocabulary-1.js</code> jaisi files honi chahiye.';
-    if(sp)sp.style.display='none';
-    if(bar){bar.style.width='100%';bar.classList.add('bg-danger');}
-  }else{
-    if(loader){loader.classList.add('done');setTimeout(()=>loader.remove(),450);}
-    /* auto-open the report once if any file/entry had a problem */
-    if(LOAD_REPORT.skipped>0||LOAD_REPORT.files.some(f=>f.error))setTimeout(openReport,700);
-  }
+document.getElementById('reportBtn').addEventListener('click',()=>{updateReportModal();bootstrap.Modal.getOrCreateInstance(document.getElementById('reportModal')).show();});
+
+function initLazyLoading(){
+  Object.keys(TAB_CONFIG).forEach(t=>{ensurePagers(t);renderPager(t);});
+  const active=store.get(LS.tab,'vocab');
+  if(SETT.loadAllFirst){Object.keys(TAB_CONFIG).forEach(t=>ensureTabLoaded(t));}
+  else{ensureTabLoaded(TAB_CONFIG[active]?active:'vocab');}
+  updateReportModal();
 }
-loadAllData();
+
+
+/* ---------- Init ---------- */
+Object.keys(EXPR).forEach(buildExprTab);
+renderVocab();renderDaily();renderProgress();updateOverall();
+document.querySelectorAll('.input-group input.form-control').forEach(_toggleClear);
+initLazyLoading();
+activateTab(store.get(LS.tab,'vocab'));
 
 /* ---------- PDF export ---------- */
 try{if(window.GleanBridge){
   window.GleanBridge.postMessage({actionId:'export-pdf',type:'glean-add-menu',metadata:{label:'Export as PDF',icon:'export'}});
   window.GleanBridge.onMessage('action',d=>{if(d.actionId==='export-pdf')window.print();});
 }}catch(e){}
+
+/* ================= DATA TOOLS: data-file validator + raw-JSON splitter/zipper ================= */
+(function(){
+  const tabsList=Object.keys(TAB_CONFIG);
+  function fillTabSelect(sel){sel.innerHTML='';tabsList.forEach(t=>{sel.add(new Option(tabLabel(t)+'  ('+TAB_CONFIG[t].folder+')',t));});}
+  function esc2(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+  function getItems(json){if(Array.isArray(json))return json;for(const k of ['items','data','entries'])if(json&&Array.isArray(json[k]))return json[k];return null;}
+
+  /* ---- dependency-free ZIP (DEFLATE via native CompressionStream, STORE fallback) ---- */
+  let _CRC=null;
+  function crc32(u8){if(!_CRC){_CRC=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);_CRC[n]=c>>>0;}}
+    let crc=0xFFFFFFFF;for(let i=0;i<u8.length;i++)crc=_CRC[(crc^u8[i])&0xFF]^(crc>>>8);return (crc^0xFFFFFFFF)>>>0;}
+  const u16=n=>[n&255,(n>>8)&255],u32=n=>[n&255,(n>>8)&255,(n>>16)&255,(n>>24)&255];
+  const _hasCS=(typeof CompressionStream!=='undefined');
+  async function deflateRaw(u8){
+    const cs=new CompressionStream('deflate-raw');
+    const w=cs.writable.getWriter();w.write(u8);w.close();
+    const buf=await new Response(cs.readable).arrayBuffer();
+    return new Uint8Array(buf);
+  }
+  async function makeZip(files){
+    const enc=new TextEncoder(),parts=[],central=[];let offset=0;
+    for(const f of files){
+      const nm=enc.encode(f.name),data=enc.encode(f.content),crc=crc32(data);
+      let method=0,payload=data;
+      if(_hasCS){try{const comp=await deflateRaw(data);if(comp.length<data.length){method=8;payload=comp;}}catch(e){method=0;payload=data;}}
+      const lh=new Uint8Array([].concat(u32(0x04034b50),u16(20),u16(0),u16(method),u16(0),u16(0),u32(crc),u32(payload.length),u32(data.length),u16(nm.length),u16(0)));
+      parts.push(lh,nm,payload);
+      const cd=new Uint8Array([].concat(u32(0x02014b50),u16(20),u16(20),u16(0),u16(method),u16(0),u16(0),u32(crc),u32(payload.length),u32(data.length),u16(nm.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset)));
+      central.push(cd,nm);offset+=lh.length+nm.length+payload.length;
+    }
+    let cdSize=0;central.forEach(c=>cdSize+=c.length);
+    const end=new Uint8Array([].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cdSize),u32(offset),u16(0)));
+    return new Blob([...parts,...central,end],{type:'application/zip'});
+  }
+  function download(blob,name){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);}
+
+  /* ---- parse a data file the same way the app would (with an eval-free fallback) ---- */
+  function parseViaEval(text){let cap=null,calls=0;const orig=window.AS_DATA;
+    window.AS_DATA=function(f,p,e){calls++;if(cap==null)cap={folder:f,page:p,entries:e};};
+    try{(new Function(text))();}finally{window.AS_DATA=orig;}return {calls,cap};}
+  function parseViaRegex(text){
+    const m=text.match(/AS_DATA\s*\(\s*(["'])((?:\\.|(?!\1).)*)\1\s*,\s*(-?\d+)\s*,\s*(\[[\s\S]*\])\s*\)\s*;?\s*$/);
+    if(!m)return {calls:0,cap:null};
+    let entries=null,parseErr=null;try{entries=JSON.parse(m[4]);}catch(e){parseErr=e;}
+    return {calls:1,cap:{folder:m[2],page:Number(m[3]),entries},parseErr};
+  }
+  function parseDataFile(text){
+    try{return parseViaEval(text);}
+    catch(e){const blocked=(e instanceof EvalError)||/eval|content security|unsafe-eval/i.test(e.message||'');
+      if(blocked)return parseViaRegex(text);
+      return {calls:-1,cap:null,jsError:e};}
+  }
+
+  /* ---------------- VALIDATE ---------------- */
+  function renderRows(rows,ok){
+    const sym={ok:'OK',warn:'!',bad:'X'};
+    const head='<div class="mb-2"><span class="dt-badge '+(ok?'dt-ok':'dt-bad')+'"><i class="bi bi-'+(ok?'check-circle':'x-circle')+'"></i> '+(ok?'Valid \u2014 the app can read this file':'Not usable as-is')+'</span></div>';
+    return head+'<ul class="dt-list mb-0">'+rows.map(r=>'<li class="mb-1"><span class="dt-badge dt-'+r[0]+'">'+sym[r[0]]+'</span> '+r[1]+'</li>').join('')+'</ul>';
+  }
+  async function runValidate(tab,file){
+    const box=document.getElementById('dtValResult');if(!file){box.innerHTML='';return;}
+    const cfg=TAB_CONFIG[tab],folder=cfg.folder;
+    let text;try{text=await file.text();}catch(e){box.innerHTML='<span class="dt-badge dt-bad">Could not read the file.</span>';return;}
+    const res=parseDataFile(text);
+    if(res.jsError){box.innerHTML='<div><span class="dt-badge dt-bad"><i class="bi bi-x-circle"></i> Invalid JavaScript</span></div><div class="mt-2">The file could not be executed: <code>'+esc2(res.jsError.message)+'</code></div>';return;}
+    if(res.calls===0||!res.cap){box.innerHTML='<div><span class="dt-badge dt-bad"><i class="bi bi-x-circle"></i> Not a data file</span></div><div class="mt-2">The file does not make a recognisable <code>AS_DATA(folder, page, entries)</code> call, so the app would register nothing from it.</div>';return;}
+    const cap=res.cap,rows=[];let verdict=true;
+    if(res.calls>1)rows.push(['warn','This file makes '+res.calls+' AS_DATA() calls. A page file should register exactly one page \u2014 only the first was checked.']);
+
+    if(cap.folder===folder)rows.push(['ok','Folder matches the selected tab: <code>'+esc2(cap.folder)+'</code>.']);
+    else{const known=folderToTab[cap.folder];
+      if(known){rows.push(['warn','This file registers folder <code>'+esc2(cap.folder)+'</code> \u2014 that is the "'+esc2(tabLabel(known))+'" tab, not the selected "'+esc2(tabLabel(tab))+'" tab.']);}
+      else{rows.push(['bad','Unknown folder <code>'+esc2(String(cap.folder))+'</code>. The app ignores files whose folder is not a known tab.']);}
+      verdict=false;}
+
+    const pageNum=Number(cap.page);
+    if(Number.isInteger(pageNum)&&pageNum>=1)rows.push(['ok','Page number is valid: <code>'+pageNum+'</code>.']);
+    else{rows.push(['bad','Page value <code>'+esc2(String(cap.page))+'</code> is not a positive whole number.']);verdict=false;}
+
+    if(!Array.isArray(cap.entries)){rows.push(['bad',res.parseErr?('The entries array is not valid JSON: <code>'+esc2(res.parseErr.message)+'</code>'):'The entries argument is not an array \u2014 nothing would load.']);verdict=false;box.innerHTML=renderRows(rows,false);return;}
+
+    let valid=0;const bad=[];
+    cap.entries.forEach((raw,i)=>{let v=null;try{v=cfg.validate(raw);}catch(e){}if(v)valid++;else if(bad.length<12)bad.push(i);});
+    const invalid=cap.entries.length-valid;
+    if(cap.entries.length===0){rows.push(['bad','The entries array is empty.']);verdict=false;}
+    else if(valid===0){rows.push(['bad','None of the '+cap.entries.length+' entries pass this tab\u2019s validation.']);verdict=false;}
+    else rows.push([invalid?'warn':'ok','Entries: '+valid+' valid'+(invalid?(' \u00b7 '+invalid+' would be skipped'):'')+' (of '+cap.entries.length+').']);
+
+    const expectName=folder+'-'+(Number.isInteger(pageNum)&&pageNum>=1?pageNum:'<page>')+'.js';
+    if(file.name===expectName)rows.push(['ok','Filename matches the required pattern <code>'+esc2(expectName)+'</code>.']);
+    else rows.push(['warn','Filename is <code>'+esc2(file.name)+'</code>. The app loads pages by path, so it must be named <code>'+esc2(expectName)+'</code> and placed in <code>data/'+esc2(folder)+'/</code>.']);
+
+    box.innerHTML=renderRows(rows,verdict&&valid>0)+(bad.length?('<div class="mt-2 phrase-hint">First malformed entry index'+(bad.length>1?'es':'')+': '+bad.join(', ')+(invalid>bad.length?' \u2026':'')+'</div>'):'');
+  }
+
+  /* ---------------- SPLIT & CONVERT ---------------- */
+  let splitReady=null;
+  function updateSplitHint(){
+    const per=parseInt(document.getElementById('dtSplitPer').value,10)||0;
+    const h=document.getElementById('dtSplitHint');
+    if(per>0&&per<PAGE_SIZE)h.innerHTML='<span class="dt-badge dt-warn">Use \u2265 '+PAGE_SIZE+' so paging works</span>';
+    else h.textContent='';
+  }
+  async function prepSplit(tab,file){
+    const box=document.getElementById('dtSplitResult'),go=document.getElementById('dtSplitGo');
+    go.disabled=true;splitReady=null;if(!file){box.innerHTML='';return;}
+    const cfg=TAB_CONFIG[tab],folder=cfg.folder;
+    let text;try{text=await file.text();}catch(e){box.innerHTML='<span class="dt-badge dt-bad">Could not read the file.</span>';return;}
+    let json;try{json=JSON.parse(text);}catch(e){box.innerHTML='<div><span class="dt-badge dt-bad"><i class="bi bi-x-circle"></i> Invalid JSON</span></div><div class="mt-2"><code>'+esc2(e.message)+'</code></div>';return;}
+    const items=getItems(json);
+    if(!items){box.innerHTML='<span class="dt-badge dt-bad">Expected a JSON array (or an object with an <code>items</code> / <code>data</code> / <code>entries</code> array).</span>';return;}
+    let skipped=0;const clean=[];
+    items.forEach(raw=>{let v=null;try{v=cfg.validate(raw);}catch(e){}if(v)clean.push(v);else skipped++;});
+    splitReady={tab,folder,clean};
+    let per=parseInt(document.getElementById('dtSplitPer').value,10)||PAGE_SIZE;if(per<1)per=PAGE_SIZE;
+    const nFiles=Math.max(1,Math.ceil(clean.length/per));
+    box.innerHTML='<ul class="dt-list mb-0">'
+      +'<li>Parsed <b>'+items.length+'</b> raw entries for the "'+esc2(tabLabel(tab))+'" tab.</li>'
+      +'<li><b>'+clean.length+'</b> valid entries will be converted to the supported format'+(skipped?(' \u00b7 <b>'+skipped+'</b> skipped'):'')+'.</li>'
+      +'<li>Will produce <b>'+nFiles+'</b> file'+(nFiles!==1?'s':'')+' named <code>'+esc2(folder)+'-1.js</code> \u2026 <code>'+esc2(folder)+'-'+nFiles+'.js</code>.</li>'
+      +'</ul>';
+    go.disabled=clean.length===0;
+  }
+  async function doSplit(){
+    if(!splitReady||!splitReady.clean.length)return;
+    const folder=splitReady.folder,clean=splitReady.clean;
+    let per=parseInt(document.getElementById('dtSplitPer').value,10);if(!per||per<1)per=PAGE_SIZE;
+    const files=[];
+    for(let i=0,page=1;i<clean.length;i+=per,page++){
+      const chunk=clean.slice(i,i+per);
+      const pretty=document.getElementById('dtSplitFormat').checked;
+      const body=pretty?JSON.stringify(chunk,null,2):JSON.stringify(chunk);
+      files.push({name:folder+'-'+page+'.js',content:'AS_DATA('+JSON.stringify(folder)+', '+page+', '+body+');\n'});
+    }
+    download(await makeZip(files),folder+'-data.zip');
+    showToast('Generated '+files.length+' file'+(files.length!==1?'s':'')+' \u2192 '+folder+'-data.zip',true);
+  }
+
+  /* ---------------- wiring ---------------- */
+  const btn=document.getElementById('dataToolsBtn');
+  btn.addEventListener('click',()=>{
+    fillTabSelect(document.getElementById('dtValTab'));
+    fillTabSelect(document.getElementById('dtSplitTab'));
+    document.getElementById('dtValResult').innerHTML='';
+    document.getElementById('dtSplitResult').innerHTML='';
+    document.getElementById('dtSplitGo').disabled=true;splitReady=null;updateSplitHint();
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('dataToolsModal')).show();
+  });
+  document.querySelectorAll('#dataToolsModal [data-dt-pill]').forEach(p=>p.addEventListener('click',()=>{
+    const k=p.dataset.dtPill;
+    document.querySelectorAll('#dataToolsModal .dt-pill').forEach(x=>x.classList.toggle('active',x===p));
+    document.querySelectorAll('#dataToolsModal .dt-panel').forEach(x=>x.classList.toggle('active',x.dataset.dtPanel===k));
+  }));
+  const valFile=document.getElementById('dtValFile');
+  document.getElementById('dtValDrop').addEventListener('click',()=>{valFile.value='';valFile.click();});
+  valFile.addEventListener('change',()=>{if(valFile.files.length)runValidate(document.getElementById('dtValTab').value,valFile.files[0]);});
+  document.getElementById('dtValTab').addEventListener('change',()=>{if(valFile.files.length)runValidate(document.getElementById('dtValTab').value,valFile.files[0]);});
+  const splitFile=document.getElementById('dtSplitFile');
+  document.getElementById('dtSplitDrop').addEventListener('click',()=>{splitFile.value='';splitFile.click();});
+  splitFile.addEventListener('change',()=>{if(splitFile.files.length)prepSplit(document.getElementById('dtSplitTab').value,splitFile.files[0]);});
+  document.getElementById('dtSplitTab').addEventListener('change',()=>{if(splitFile.files.length)prepSplit(document.getElementById('dtSplitTab').value,splitFile.files[0]);});
+  document.getElementById('dtSplitPer').addEventListener('input',()=>{updateSplitHint();if(splitFile.files.length)prepSplit(document.getElementById('dtSplitTab').value,splitFile.files[0]);});
+  document.getElementById('dtSplitGo').addEventListener('click',doSplit);
+  [['dtValDrop',valFile,()=>runValidate(document.getElementById('dtValTab').value,valFile.files[0])],
+   ['dtSplitDrop',splitFile,()=>prepSplit(document.getElementById('dtSplitTab').value,splitFile.files[0])]].forEach(cfg=>{
+    const el=document.getElementById(cfg[0]),fi=cfg[1],cb=cfg[2];
+    el.addEventListener('dragover',e=>{e.preventDefault();el.classList.add('drag');});
+    el.addEventListener('dragleave',()=>el.classList.remove('drag'));
+    el.addEventListener('drop',e=>{e.preventDefault();el.classList.remove('drag');if(e.dataTransfer.files.length){fi.files=e.dataTransfer.files;cb();}});
+  });
+})();
+
 </script>
-<div class="modal fade" id="reportModal" tabindex="-1" aria-hidden="true" data-glean-id="report-modal">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title mb-0"><i class="bi bi-clipboard-data me-2"></i>Data load report</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="reportBody"></div>
-      <div class="modal-footer"><button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button></div>
-    </div>
-  </div>
-</div>
 </body>
 </html>
