@@ -197,12 +197,22 @@
   .filter-inline .form-switch .form-check-input{margin-left:0;float:none;}
   .filter-inline .form-select{width:auto;min-width:160px;flex:0 1 auto;}
   .filter-inline .form-check{margin-bottom:0;flex:0 0 auto;white-space:nowrap;}
-  .controls .input-group{width:auto;flex:1 1 220px;}
-  @media (min-width:992px){ .filter-toggle{display:none!important;} }
+  .controls .input-group{width:auto;flex:1 1 220px;position:relative;}
+  /* Filter toggle attached inside the search input-group (right side), square right corners, all devices */
+  /* Filter toggle mirrors the left search icon: same chip background/border/color, rounded right corners */
+  .input-group>.filter-toggle{background:var(--artifact-chip);border:1px solid var(--artifact-border);color:var(--artifact-accent);border-radius:0 8px 8px 0!important;margin-left:-1px;z-index:2;}
+  .input-group>.filter-toggle:hover,.input-group>.filter-toggle:focus{background:var(--artifact-chip);border-color:var(--artifact-border);color:var(--artifact-accent);box-shadow:none;}
+  .input-group>.filter-toggle.active{background:var(--artifact-accent);border-color:var(--artifact-accent);color:#fff;}
+  html[data-theme='dark'] .input-group>.filter-toggle{color:var(--artifact-accent-soft);}
+  .input-group>.form-control{border-top-right-radius:0!important;border-bottom-right-radius:0!important;}
+  /* Clear (x) sits to the left of the always-visible filter toggle */
+  .input-group:has(>.filter-toggle) > .search-clear{right:3rem;}
+  /* Filters open via the toggle button on every device */
+  .filter-body{display:none;}
+  .filter-body.show{display:block;}
+  .filter-inline.show{display:flex;flex-wrap:wrap;}
   @media (max-width:991.98px){
-    .filter-body{display:none;}
-    .filter-body.show{display:block;}
-    .filter-inline.show{display:flex;flex-wrap:wrap;flex-basis:100%;}
+    .filter-inline.show{flex-basis:100%;}
   }
   @media print{
     body{margin:0;padding:.4in .6in;background:#fff;print-color-adjust:exact;-webkit-print-color-adjust:exact;}
@@ -296,8 +306,7 @@
       <div class="surface controls">
         <div class="d-flex gap-2 align-items-center">
           <div class="input-group flex-grow-1"><span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input id="vSearch" type="text" class="form-control" placeholder="Search word, meaning or sentence..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button></div>
-          <button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button>
+            <input id="vSearch" type="text" class="form-control" placeholder="Search word, meaning or sentence..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button><button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button></div>
         </div>
         <div class="filter-body">
           <div class="row g-2 mt-1">
@@ -320,8 +329,7 @@
       <div class="surface controls">
         <div class="d-flex gap-2 align-items-center flex-wrap">
           <div class="input-group flex-grow-1" style="min-width:200px;"><span class="input-group-text"><i class="bi bi-search"></i></span>
-            <input id="dSearch" type="text" class="form-control" placeholder="Search a phrase or situation..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button></div>
-          <button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button>
+            <input id="dSearch" type="text" class="form-control" placeholder="Search a phrase or situation..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button><button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button></div>
           <div class="filter-body filter-inline">
             <select id="dCat" class="form-select"><option value="">All situations</option></select>
             <div class="form-check form-switch d-flex align-items-center gap-2 mb-0">
@@ -754,8 +762,7 @@ function buildExprTab(key){
   root.innerHTML=`<div class="surface controls">
     <div class="d-flex gap-2 align-items-center flex-wrap">
       <div class="input-group flex-grow-1" style="min-width:200px;"><span class="input-group-text"><i class="bi bi-search"></i></span>
-        <input type="text" class="form-control ex-search" placeholder="Search ${cfg.name.toLowerCase()} or meaning..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button></div>
-      <button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button>
+        <input type="text" class="form-control ex-search" placeholder="Search ${cfg.name.toLowerCase()} or meaning..."><button class="search-clear" type="button" aria-label="Clear search" tabindex="-1"><i class="bi bi-x-circle-fill"></i></button><button class="btn btn-outline-secondary filter-toggle" data-filter-toggle type="button" title="Show filters"><i class="bi bi-sliders2"></i></button></div>
       <div class="filter-body filter-inline">
         <select class="form-select ex-sort"><option value="az">A → Z</option><option value="za">Z → A</option><option value="learned">Unlearned first</option></select>
         <div class="form-check form-switch d-flex align-items-center gap-2 mb-0">
