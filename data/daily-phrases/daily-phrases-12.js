@@ -1,4 +1,5 @@
-[
+/* daily-phrases — page 12 of 12 (50 entries) */
+AS_DATA("daily-phrases", 12, [
   {"english":"Get into bed.","hindi":"बिस्तर में जाओ।","category":"Warnings & Commands"},
   {"english":"Please get in the car.","hindi":"कृपया कार में बैठिए।","category":"Requests"},
   {"english":"Please get on the bus.","hindi":"कृपया बस में चढ़िए।","category":"Requests"},
@@ -31,5 +32,22 @@
   {"english":"Don't tear your pages.","hindi":"अपनी कॉपी की पेज मत फाड़ो।","category":"Warnings & Commands"},
   {"english":"What did your mam say?","hindi":"मैम ने क्या कहा?","category":"Questions"},
   {"english":"Where did you pick it from?","hindi":"ये कहाँ से उठाया?","category":"Questions"},
-  {"english":"Did you hurt yourself?","hindi":"चोट लग गयी क्या?","category":"Questions"}
-]
+  {"english":"Did you hurt yourself?","hindi":"चोट लग गयी क्या?","category":"Questions"},
+  {"english":"I recognised her at a glance.","hindi":"मैंने उसे एक नजर में पहचान लिया।","category":"General"},
+  {"english":"Tell him to shut up.","hindi":"उसे मुंह बंद करने को कहो।","category":"Warnings & Commands"},
+  {"english":"I am better off alone.","hindi":"मैं अकेला ही ठीक हूं।","category":"Feelings"},
+  {"english":"These are tears of Joy.","hindi":"ये खुशी के आँसू है।","category":"Feelings"},
+  {"english":"Don't stretch the matter further.","hindi":"अब बात को ज्यादा बढ़ाओ मत।","category":"Warnings & Commands"},
+  {"english":"It doesn't bother me.","hindi":"मुझे फर्क नहीं पड़ता।","category":"General"},
+  {"english":"Don't blow it out of proportion.","hindi":"बात को बढ़ाओ मत।","category":"Warnings & Commands"},
+  {"english":"I'm used to it.","hindi":"मुझे इसकी आदत है।","category":"General"},
+  {"english":"I doubt it.","hindi":"मुझे इसमें शक है।","category":"Feelings"},
+  {"english":"I saw it coming.","hindi":"मुझे इसका अंदाज़ा था।","category":"General"},
+  {"english":"Don't overthink it.","hindi":"इसे ज़्यादा मत सोचो।","category":"Warnings & Commands"},
+  {"english":"I'll get over it.","hindi":"मैं इससे उबर जाऊूँगा।","category":"General"},
+  {"english":"I get the point.","hindi":"मुझे बात समझ आ गई।","category":"General"},
+  {"english":"It's my turn.","hindi":"अब मेरी बारी है।","category":"General"},
+  {"english":"I have no objection.","hindi":"मुझे कोई आपत्ति नहीं।","category":"General"},
+  {"english":"Let it slide.","hindi":"इसे जाने दो।","category":"Warnings & Commands"},
+  {"english":"I'll handle it.","hindi":"मैं संभाल लूँगा।","category":"General"}
+]);
